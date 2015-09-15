@@ -28,11 +28,11 @@ Data visualization
 
 For a better understanding of these functions, read the Wiki
 
-## INSTALL ##
-
+****************************************************
+INSTALL
 NodosApp is written in Python 2.7, hence you need to install this package in order to use it
 
-[Download Python 2.7](https://www.python.org/download/releases/2.7/)
+Link for Python: https://www.python.org/download/releases/2.7
 
 Once installed, you should go to the Python27/Scripts folder, and run the next commands:
 
