@@ -1,0 +1,185 @@
+<html lang="en">
+<head>
+	<title>NodosApp Viz</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="js/sigma.min.js"></script>
+
+<style>
+.sigma-parent {
+  width: 100%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #FAFAFA;
+  position: left;
+}
+.sigma-expand {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.buttons-container{
+    padding-bottom: 8px;
+    padding-top: 12px;
+ }
+h2{
+ font-size: 35px;
+ font-family: verdana;
+ }
+</style>
+
+<body bgcolor="#FAFAFA">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+	<center>
+  <h2>NodosApp Viz</h2>
+  </center>
+  
+  <center>
+    <div class="span12 buttons-container">
+    
+    <button class="btn" id="stop-layout">Stop Layout</button>
+	<button class="btn" id="rescale-graph">Rescale and Color</button>
+	<button class="btn" id="random">Random Layout</button>
+    <button class="btn" id="circular">Circular Layout</button>
+    </center>
+  </div>
+  <div class="sigma-parent" id="sigma-example-parent">
+    <div class="sigma-expand" id="sigma-example"></div>
+  </div>
+</div>
+
+    <script type="text/javascript" src="js/sigma.parseGexf.js"></script>
+	<script type="text/javascript" src="js/sigma.forceatlas2.js"></script>
+	<script type="text/javascript">function init() {
+	// Layouts
+	  sigma.publicPrototype.myCircularLayout = function() {
+    var R = 100,
+        i = 0,
+        L = this.getNodesCount();
+ 
+    this.iterNodes(function(n){
+      n.x = Math.cos(Math.PI*(i++)/L)*R;
+      n.y = Math.sin(Math.PI*(i++)/L)*R;
+    });
+ 
+    return this.position(0,0,1).draw();
+  };
+ 
+  // The following method will parse the related sigma instance nodes
+  // and set its position to as random in a square around the center:
+  sigma.publicPrototype.myRandomLayout = function() {
+    var W = 100,
+        H = 100;
+    
+    this.iterNodes(function(n){
+      n.x = W*Math.random();
+      n.y = H*Math.random();
+    });
+ 
+    return this.position(0,0,1).draw();
+  };
+  // Instanciate sigma.js and customize rendering :
+  var sigInst = sigma.init(document.getElementById('sigma-example')).drawingProperties({
+    defaultLabelColor: '#fff',
+    defaultLabelSize: 14,
+    defaultLabelBGColor: '#fff',
+    defaultLabelHoverColor: '#000',
+    labelThreshold: 6,
+    defaultEdgeType: 'curve'
+  }).graphProperties({
+    minNodeSize: 0.5,
+    maxNodeSize: 5,
+    minEdgeSize: 1,
+    maxEdgeSize: 1
+  }).mouseProperties({
+    maxRatio: 32
+  });
+  // Parse a GEXF encoded file to fill the graph
+  // (requires "sigma.parseGexf.js" to be included)
+  sigInst.parseGexf('data/graph_signod.gexf');
+  //highlights the nodes that is hovered+ its edges
+  //
+  // Bind events :
+  var greyColor = '#666';
+  sigInst.bind('overnodes',function(event){
+    var nodes = event.content;
+    var neighbors = {};
+    sigInst.iterEdges(function(e){
+      if(nodes.indexOf(e.source)<0 && nodes.indexOf(e.target)<0){
+        if(!e.attr['grey']){
+          e.attr['true_color'] = e.color;
+          e.color = greyColor;
+          e.attr['grey'] = 1;
+        }
+      }else{
+        e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+        e.attr['grey'] = 0;
+        neighbors[e.source] = 1;
+        neighbors[e.target] = 1;
+      }
+    }).iterNodes(function(n){
+      if(!neighbors[n.id]){
+        if(!n.attr['grey']){
+          n.attr['true_color'] = n.color;
+          n.color = greyColor;
+          n.attr['grey'] = 1;
+        }
+      }else{
+        n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+        n.attr['grey'] = 0;
+      }
+    }).draw(2,2,2);
+  }).bind('outnodes',function(){
+    sigInst.iterEdges(function(e){
+      e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+      e.attr['grey'] = 0;
+    }).iterNodes(function(n){
+	  n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+      n.attr['grey'] = 0;
+    }).draw(2,2,2);
+  });
+  sigInst.startForceAtlas2();
+
+  var isRunning = true;
+  document.getElementById('stop-layout').addEventListener('click',function(){
+    if(isRunning){
+      isRunning = false;
+      sigInst.stopForceAtlas2();
+      document.getElementById('stop-layout').childNodes[0].nodeValue = 'Start Layout';
+    }else{
+      isRunning = true;
+      sigInst.startForceAtlas2();
+      document.getElementById('stop-layout').childNodes[0].nodeValue = 'Stop Layout';
+    }
+  },true);
+  document.getElementById('rescale-graph').addEventListener('click',function(){
+    sigInst.iterNodes(function(n){
+	  n.size = 0.5+4.5*Math.random() 
+	  n.color = 'rgb('+Math.round(Math.random()*256)+','+
+					   Math.round(Math.random()*256)+','+
+					   Math.round(Math.random()*256)+')'
+	  });
+    sigInst.position(0,0,1).draw();
+  },true);
+    document.getElementById('circular').addEventListener('click',function(){
+    sigInst.myCircularLayout();
+  },true);
+  document.getElementById('random').addEventListener('click',function(){
+    sigInst.myRandomLayout();
+  },true);
+}
+ 
+if (document.addEventListener) {
+  document.addEventListener('DOMContentLoaded', init, false);
+} else {
+  window.onload = init;
+}	
+
+</script>
+
+</body>
+</html>

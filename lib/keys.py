@@ -1,0 +1,8 @@
+########### Passwords API Twitter ####################
+
+CONSUMER_KEY = 'PP6csT22L8IDHqEeMgYA'
+CONSUMER_SECRET = 'IPtSiYHn3sGfMiRlTJksiZyqzVeYJnW7GsjJe9UvsE'
+
+ACCESS_KEY = '475306226-auH9mISAKvgCBZgSu3ppCXaMJ5tDjPFN0xziN1IY'
+ACCESS_SECRET = 'pr9meP4rP8vML8JrBerfcbH6iSnRSiyUgHC7a9C6A'
+

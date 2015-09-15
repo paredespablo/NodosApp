@@ -1,0 +1,132 @@
+NodosApp v0.9
+NodosChile Ltda. 2012-2015
+by PPN <s1339439@sms.ed.ac.uk>
+
+Instructions for each function of NodosApp
+
+*********************************************
+
+Data from Twitter
+- Search API
+
+The Search API of Twitter is a powerful tool that allows you to download up to 7 days of data for specific terms or hashtags. NodosApp makes use of this API and exports the results as a text file with fourteen variables:
+
+Tweet id: the tweet's id in Twitter.
+Screen name: The visible username of the tweeter.
+Name: The name given by the tweeter (it may be real or not).
+Username Id: The username's id in Twitter
+register_time: The initial sign up date of the user in Twitter
+followers: Number of followers of the user.
+following: Number of people being followed by the user.
+statuses: Number of tweets written by the user.
+location: Location given by the user (it may be real or not).
+timestamp: Timestamp of the tweet.
+geo: Geographical coordinates (only if the user is using that feature).
+source: Device used by the user to send the tweet.
+language: Identified language used by the user to send the tweet.
+tweet: Tweet's text
+
+Input: Typing a keyword on the main GUI.
+Output: A text file of tweets with fourteen variables
+
+- Streaming API
+Streaming API is a tool provided by Twitter that allows you to download real time data up to 400 keywords. To use this feature in NodosApp, you have to prepare a text file with keywords separated by comma, that will be required by the program to run this function. The final data has the same format of the Search API with fourteen variables.
+
+Input: A textfile with keywords (up to 400)
+Output: A text file of tweets with fourteen variables
+
+- Georeferenced Streaming API
+Georeferenced Streaming API is basically a Streaming API with geographic boundaries. It works in a similar way, but it previously requires to set a number of coordinated to start the scanning. You may do this from the main GUI in Tools > Georeferencing area
+
+Input: A defined georeferencing area
+Output: A text file of tweets with fourteen variables
+
+
+- Timeline from a specific user
+This is an specific function to download the last 3200 tweets from an specific account. The final data has the same format of the Search API with fourteen variables.
+
+Input: Username
+Output:  A text file of tweets with fourteen variables
+
+Social Network and Media Analysis
+- Building of GEXF files
+
+Input: A text file with downloaded data
+Output: A GEXF file
+
+Making use of NetworkX, NodosApp build GEXF 1.0 files based on already downloaded data.
+
+- Social network's indicators
+
+Making use of Networkx, NodosApp generate the next social network indicators:
+
+Average clustering: 
+Average in-degree centrality: 
+Average out-degree centrality: 
+Average closeness centrality: 
+Average betweenness centrality: 
+Number of components: 
+Assortativity coefficient: 
+Estrata index: 
+
+In addition to these graph indicators, NodosApp exports a file with individual indicators for each node (twitter user) of the network.
+
+Input: A GEXF file
+Output: A text file with indicators for each node
+
+- Sentiment Analysis (spanish and english)
+
+Sentiment analysis is a technique to identify if the tweets are positive, negative or neutral. NodosApp only offers a basic method based on a dictionary analysis, which recognizes positive, neutral or negative words in a tweet. Based on the numbers after this process, a final sign is given. However, this value may not be very precise. Number (and percentages) of positive, neutral and negative tweets are returned.
+
+Input: A text file with downloaded data
+Output: Number (and percentages) of positive, neutral and negative tweets
+
+- Gender analysis (spanish and english)
+
+This function attempts to identify the gender of the users based on their screen names. For this goal, NodosApp use a dictionary of names in spanish and english in order to identify the gender of the users. However, as it depends on the screen names given by the users, in many cases it will not be possible an accurate identification. Numbers (and percentages) of male, female and 'unidentified' users are returned.
+
+Input: A text file with downloaded data
+Output: Numbers (and percentages) of male, female and 'unidentified' users
+
+- Ranking of more popular hashtags
+
+This function simply genereated a ranking of the 15 most relevant hashtags in Twitter based on the number of tweets that mentions them. On the basics, the function prints a list of hashtags and their number of mentions, but also exports an external file in HTML format which makes use of Google Visualization tools. It may have problems to run in Google Chrome from a local environment, but it works fine in other web browsers and from the web. To set up fhe colour of this visualization, you have to to to Tools > Result's Colour
+
+Input: A text file with downloaded data
+Output: Google Visualization graph with the 15 most relevant hashtags.
+
+- Ranking of more active users
+
+This function simply genereated a ranking of the 15 more relevant users in Twitter based on the number of tweets generated by them. On the basics, the function prints a list of users and their number of tweets, but also exports an external file in HTML format which makes use of Google Visualization tools. It may have problems to run in Google Chrome from a local environment, but it works fine in other web browsers and from the web. To set up fhe colour of this visualization, you have to to to Tools > Result's Colour
+
+Input: A text file with downloaded data.
+Output: Google Visualization graph with the 15 most relevant users.
+
+- Ranking of more mentioned users
+
+This function simply genereated a ranking of the 15 more mentioned users in Twitter based on the number of tweets which mentions them. On the basics, the function prints a list of users and the number of tweets than mentions them, but also exports an external file in HTML format which makes use of Google Visualization tools. It may have problems to run in Google Chrome from a local environment, but it works fine in other web browsers and from the web. To set up fhe colour of this visualization, you have to to to Tools > Result's Colour
+
+Input: A text file with downloaded data.
+Output: Google Visualization graph with the 15 most mentioned users. 
+
+Data visualization
+- Georeferencing of tweets in Google maps.
+
+As it name says, this function plot a Google Map file for the downloaded data. It works based on the coordinates given by the users, so just a small percentage of the tweets may be included. Once created, you can navigate on a map with dots of users and tweets.
+
+Input: A text file with downloaded data.
+Output: Google Map with georeferenced users and tweets.
+
+- Networks in Sigma.js
+
+Sigma.js is a powerful library to create graphs and visualizations. It may be slow for big graphs.
+
+Input: GEXF file
+Output: Sigma-js visualization
+
+- Networks in D3.js
+
+D3.js is another popular library to create graphs and visualizations.
+
+Input: GEXF file
+Output: D3.js visualization
