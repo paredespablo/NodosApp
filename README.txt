@@ -17,9 +17,9 @@ Social Network and Media Analysis
 - Social network's indicators
 - Sentiment Analysis (spanish and english)
 - Gender analysis (spanish and english)
-- Ranking of more popular hashtags
-- Ranking of more active users
-- Ranking of more mentioned users
+- Ranking of most popular hashtags
+- Ranking of most active users
+- Ranking of most mentioned users
 
 Data visualization
 - Georeferencing of tweets in Google maps
