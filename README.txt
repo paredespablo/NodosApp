@@ -26,14 +26,17 @@ Data visualization
 - Networks in Sigma.js
 - Networks in D3.js
 
-For a better understanding of these functions, read the INSTRUCTIONS' file.
+For a better understanding of these functions, read the [INSTRUCTIONS file](https://bitbucket.org/pabloparedesn/nodosapp/wiki/Home).
 
+## INSTALL ##
 
-This application is released under a BSD license and makes use of the following packages and libraries:
-- Python 2.7 (https://www.python.org/download/releases/2.7/)
-- TKinter (included in Python)
-- NetworkX (https://pypi.python.org/pypi/networkx/)
-- Tweepy (https://pypi.python.org/pypi/tweepy)
-- Sigma.js
-- D3.js
-- Spanish DAL lexicon (http://habla.dc.uba.ar/gravano/sdal)
+NodosApp is written in Python 2.7, hence you need to install this package in order to use it
+
+[Download Python 2.7](https://www.python.org/download/releases/2.7/)
+
+Once installed, you should go to the Python27/Scripts folder, and run the next commands:
+
+* pip install networkx
+* pip install tweepy
+
+These commands (either run by windows console or linux terminal) will install the required libraries to run NodosApp. Otherwise, you will have to download them manually ([additional information](https://bitbucket.org/pabloparedesn/nodosapp/wiki/Install%20instructions))
