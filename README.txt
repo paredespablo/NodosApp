@@ -26,7 +26,7 @@ Data visualization
 - Networks in Sigma.js
 - Networks in D3.js
 
-For a better understanding of these functions, read the [INSTRUCTIONS file](https://bitbucket.org/pabloparedesn/nodosapp/wiki/Home).
+For a better understanding of these functions, read the Wiki
 
 ## INSTALL ##
 
@@ -39,4 +39,4 @@ Once installed, you should go to the Python27/Scripts folder, and run the next c
 * pip install networkx
 * pip install tweepy
 
-These commands (either run by windows console or linux terminal) will install the required libraries to run NodosApp. Otherwise, you will have to download them manually ([additional information](https://bitbucket.org/pabloparedesn/nodosapp/wiki/Install%20instructions))
+These commands (either run by windows console or linux terminal) will install the required libraries to run NodosApp. Otherwise, you will have to download them manually.
