@@ -22,7 +22,8 @@ The capabilities of NodosApp can be divided in three groups of functions:
 - Ranking of most popular hashtags
 - Ranking of most active users
 - Ranking of most mentioned users
-- ![Nodos](http://elalmud.cl/nodos/nodos2.png)
+
+![Nodos](http://elalmud.cl/nodos/nodos2.png)
 
 **Data visualization**
 - Georeferencing of tweets in Google maps
