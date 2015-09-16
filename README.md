@@ -9,7 +9,7 @@ NodosApp is a lightweight application written in Python 2.7 for social network a
 
 The capabilities of NodosApp can be divided in three groups of functions:
 
-**Downloading of data from Twitter**
+**Twitter data**
 - Search API
 - Streaming and Georeferenced Streaming API
 - Timeline from a specific user
