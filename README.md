@@ -28,6 +28,8 @@ The capabilities of NodosApp can be divided in three groups of functions:
 - Georeferencing of tweets in Google maps
 - Networks in Sigma.js
 - Networks in D3.js
+
+
 ![Nodos](http://elalmud.cl/nodos/nodos4.png)
 
 For a better understanding of these functions, read the [Wiki](https://github.com/paredespablo/NodosApp/wiki)
