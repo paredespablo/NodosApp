@@ -39,13 +39,17 @@ For a better understanding of these functions, read the [Wiki](https://github.co
 
 #####HOW TO INSTALL
 
-NodosApp is written in Python 2.7, hence you need to install this package in order to use it
+1) NodosApp is written in Python 2.7, hence you need to install this package in order to use it
 
 [Link for Python](https://www.python.org/download/releases/2.7)
 
-Once installed, you should go to the Python27/Scripts folder, and run the next commands:
+2) Once installed, you should go to the Python27/Scripts folder, and run the next commands:
 
 * pip install networkx
 * pip install tweepy
 
 These commands (either run by windows console or linux terminal) will install the required libraries to run NodosApp. Otherwise, you will have to download them manually.
+
+3) [Download NodosApp](https://github.com/paredespablo/NodosApp/archive/master.zip)
+
+4) Run the file "NodosApp 0.9.py" and start scanning hashtags.
